@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.framgia.model.User" table="user" catalog="cloudsale" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="customer" class="com.framgia.model.Customer" fetch="select">
+            <column name="CUSTOMER_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="shop" class="com.framgia.model.Shop" fetch="select">
+            <column name="SHOP_ID" not-null="true" />
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="USERNAME" length="100" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="100" />
+        </property>
+        <property name="role" type="java.lang.Integer">
+            <column name="ROLE" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="STATUS" />
+        </property>
+    </class>
+</hibernate-mapping>
