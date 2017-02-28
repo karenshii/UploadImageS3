@@ -35,7 +35,7 @@ public class HomeController {
 	@Autowired
 	private IUserService userService;
 
-	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
@@ -45,13 +45,6 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 
 		model.addAttribute("serverTime", formattedDate);
-
-		List<UserInfo> userInfoList = userService.findAll();
-		if (!Helpers.isEmpty(userInfoList)) {
-			for (UserInfo userInfo : userInfoList) {
-				System.out.println(userInfo.getId());
-			}
-		}
 
 		return "home";
 	}
