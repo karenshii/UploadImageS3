@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.framgia.model.Shop" table="shop" catalog="cloudsale" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="100" />
+        </property>
+        <property name="address" type="string">
+            <column name="ADDRESS" length="500" />
+        </property>
+        <property name="tel" type="string">
+            <column name="TEL" length="20" />
+        </property>
+        <set name="orderDetails" table="order_detail" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SHOP_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.framgia.model.OrderDetail" />
+        </set>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SHOP_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.framgia.model.User" />
+        </set>
+        <set name="products" table="product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SHOP_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.framgia.model.Product" />
+        </set>
+    </class>
+</hibernate-mapping>
