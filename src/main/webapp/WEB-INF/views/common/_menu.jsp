@@ -30,8 +30,11 @@
 					class="fa fa-database fa-fw"></i>Group Product Manager</a></li>
 			<li><a href="${pageContext.request.contextPath}/shop"><i
 					class="fa fa-map-marker fa-fw"></i>Shop Manager</a></li>
-			<li><a href="manage-users.html"><i class="fa fa-users fa-fw"></i>Order
-					Manager</a></li>
+
+			<li><a
+				href="${pageContext.request.contextPath}/order-detail-lists"
+				class="active"><i class="fa fa-users fa-fw"></i>Order Manager</a></li>
+				
 			<li><a href="${pageContext.request.contextPath}/logout"><i
 					class="fa fa-eject fa-fw"></i>Sign Out</a></li>
 		</ul>
