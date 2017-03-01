@@ -24,6 +24,7 @@ public class UserService extends BaseService implements IUserService {
 					BeanUtils.copyProperties(user, userInfo);
 					userInfoList.add(userInfo);
 				}
+				logger.debug("find all user: " + userInfoList);
 				return userInfoList;
 			}
 		} catch (Exception e) {
