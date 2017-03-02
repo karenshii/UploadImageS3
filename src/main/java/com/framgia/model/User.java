@@ -6,8 +6,7 @@ package com.framgia.model;
  */
 public class User implements java.io.Serializable {
 
-	private int id;
-	private Customer customer;
+	private Integer id;
 	private Shop shop;
 	private String username;
 	private String password;
@@ -17,15 +16,13 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	public User(int id, Customer customer, Shop shop) {
+	public User(Integer id, Shop shop) {
 		this.id = id;
-		this.customer = customer;
 		this.shop = shop;
 	}
 
-	public User(int id, Customer customer, Shop shop, String username, String password, Integer role, Integer status) {
+	public User(Integer id, Shop shop, String username, String password, Integer role, Integer status) {
 		this.id = id;
-		this.customer = customer;
 		this.shop = shop;
 		this.username = username;
 		this.password = password;
@@ -33,20 +30,12 @@ public class User implements java.io.Serializable {
 		this.status = status;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Customer getCustomer() {
-		return this.customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
 	}
 
 	public Shop getShop() {

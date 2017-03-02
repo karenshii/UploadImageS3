@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1 -->
 <hibernate-mapping>
     <class name="com.framgia.model.Shop" table="shop" catalog="cloudsale" optimistic-lock="version">
-        <id name="id" type="int">
+        <id name="id" type="java.lang.Integer">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="name" type="string">
             <column name="NAME" length="100" />
@@ -17,23 +16,15 @@
         <property name="tel" type="string">
             <column name="TEL" length="20" />
         </property>
-        <set name="orderDetails" table="order_detail" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SHOP_ID" not-null="true" />
-            </key>
+        <list name="orderDetails" cascade="all" table="order_detail" lazy="true" fetch="select">
+            <key column="SHOP_ID" />
+             <index column="idx"/>
             <one-to-many class="com.framgia.model.OrderDetail" />
-        </set>
-        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SHOP_ID" not-null="true" />
-            </key>
+        </list>
+        <list name="users" cascade="all" table="user" lazy="true" fetch="select">
+            <key column="SHOP_ID" />
+             <index column="idx"/>
             <one-to-many class="com.framgia.model.User" />
-        </set>
-        <set name="products" table="product" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="SHOP_ID" not-null="true" />
-            </key>
-            <one-to-many class="com.framgia.model.Product" />
-        </set>
+        </list>
     </class>
 </hibernate-mapping>

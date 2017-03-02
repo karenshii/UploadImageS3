@@ -21,5 +21,10 @@
 		<put-attribute name="title" value="User Data"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/user.jsp"></put-attribute>
 	</definition>
+	
+	<definition name="addUser" extends="base.definition">
+		<put-attribute name="title" value="Add User Form"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/addUser.jsp"></put-attribute>
+	</definition>
 
 </tiles-definitions>

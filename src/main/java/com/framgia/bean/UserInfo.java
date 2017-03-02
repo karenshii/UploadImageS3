@@ -1,39 +1,29 @@
 package com.framgia.bean;
 
-import com.framgia.model.Customer;
-import com.framgia.model.Shop;
 
 public class UserInfo {
-	private int id;
-	private Customer customer;
-	private Shop shop;
+
+	private Integer id;
+	private ShopInfo shopInfo;
 	private String username;
 	private String password;
 	private Integer role;
 	private Integer status;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public ShopInfo getShopInfo() {
+		return shopInfo;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
+	public void setShopInfo(ShopInfo shopInfo) {
+		this.shopInfo = shopInfo;
 	}
 
 	public String getUsername() {
@@ -66,6 +56,11 @@ public class UserInfo {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public UserInfo() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 }
