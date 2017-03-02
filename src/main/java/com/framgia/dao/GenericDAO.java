@@ -23,7 +23,7 @@ public abstract class GenericDAO<E, Id extends Serializable> extends HibernateDa
 		return persistentClass;
 	}
 	
-	public void setPersistentClass(Class<E> persistentClass) {
+	public GenericDAO(Class<E> persistentClass){
 		this.persistentClass = persistentClass;
 	}
 
