@@ -9,4 +9,10 @@
 			<ref bean="UserDAO" />
 		</property>
 	</bean>
+	
+	<bean id="OrderDetailService" class="com.framgia.service.OrderDetailService">
+		<property name="orderDetailDAO">
+			<ref bean="OrderDetailDAO" />
+		</property>
+	</bean>
 </beans>

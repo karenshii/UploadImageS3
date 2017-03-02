@@ -21,5 +21,9 @@
 		<put-attribute name="title" value="User Data"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/user.jsp"></put-attribute>
 	</definition>
+	<definition name="order-detail-lists" extends="base.definition">
+		<put-attribute name="title" value="Order Manager"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/order-detail-lists.jsp"></put-attribute>
+	</definition>
 
 </tiles-definitions>

@@ -1,27 +1,12 @@
-package com.framgia.model;
+package com.framgia.bean;
 
-/* 
- * Edit by tungtv
- * */
-public class OrderDetail {
 
+public class OrderDetailInfo {
 	private Long id;
 	private int quantity;
 	private Long productId;
 	private int status;
 	private Long shopId;
-
-	public OrderDetail() {
-	}
-
-	public OrderDetail(Long id, int quantity, Long productId, int status, Long shopId) {
-		super();
-		this.id = id;
-		this.quantity = quantity;
-		this.productId = productId;
-		this.status = status;
-		this.shopId = shopId;
-	}
 
 	public Long getId() {
 		return id;
