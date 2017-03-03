@@ -3,25 +3,22 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.framgia.model.OrderDetail" table="order_detail" catalog="cloudsale" optimistic-lock="version">
-        <id name="orderId" type="java.lang.Integer">
-            <column name="ORDER_ID" />
-            <generator class="foreign">
-                <param name="property">order</param>
-            </generator>
-        </id>
-        <one-to-one name="order" class="com.framgia.model.Order" constrained="true"></one-to-one>
-        <many-to-one name="product" class="com.framgia.model.Product" fetch="select">
-            <column name="PRODUCT_ID" not-null="true" />
-        </many-to-one>
-        <many-to-one name="shop" class="com.framgia.model.Shop" fetch="select">
-            <column name="SHOP_ID" not-null="true" />
-        </many-to-one>
-        <property name="quantity" type="java.lang.Integer">
-            <column name="QUANTITY" />
-        </property>
-        <property name="status" type="java.lang.Integer">
-            <column name="STATUS" />
-        </property>
-    </class>
+	<class name="com.framgia.model.OrderDetail" table="order_detail"
+		catalog="cloudsale" optimistic-lock="version">
+		<id name="id" type="java.lang.Long">
+			<column name="ORDER_ID" />
+		</id>
+		<property name="quantity" type="java.lang.Integer">
+			<column name="QUANTITY" />
+		</property>
+		<property name="productId" type="java.lang.Long">
+			<column name="PRODUCT_ID" />
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="STATUS" />
+		</property>
+		<property name="shopId" type="java.lang.Long">
+			<column name="SHOP_ID" />
+		</property>
+	</class>
 </hibernate-mapping>
