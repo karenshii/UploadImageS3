@@ -24,7 +24,7 @@ public class UserController {
 
 	@Autowired
 	private IUserService userService;
-
+  
 	@Autowired
 	private IShopService shopService;
 

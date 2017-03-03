@@ -14,4 +14,6 @@ public interface IUserService extends IBaseService {
 	
 	public void editUSer(UserInfo userInfo);
 
+	public void addUser(UserInfo userInfo);
+
 }

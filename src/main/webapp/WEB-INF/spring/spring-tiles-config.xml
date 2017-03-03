@@ -26,10 +26,15 @@
 		<put-attribute name="title" value="Add User Form"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/addUser.jsp"></put-attribute>
 	</definition>
-	
+  
 	<definition name="edituser" extends="base.definition">
 		<put-attribute name="title" value="Edit User Form"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/edituser.jsp"></put-attribute>
+  </definition>
+  
+	<definition name="order-detail-lists" extends="base.definition">
+		<put-attribute name="title" value="Order Manager"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/order-detail-lists.jsp"></put-attribute>
 	</definition>
 
 </tiles-definitions>
