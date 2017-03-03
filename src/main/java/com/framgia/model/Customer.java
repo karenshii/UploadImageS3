@@ -16,20 +16,18 @@ public class Customer implements java.io.Serializable {
 	private String address;
 	private String tel;
 	private String email;
-	private Set<User> users = new HashSet<User>(0);
 	private Set<Order> orders = new HashSet<Order>(0);
 
 	public Customer() {
 	}
 
-	public Customer(String name, Date dob, String address, String tel, String email, Set<User> users,
+	public Customer(String name, Date dob, String address, String tel, String email,
 			Set<Order> orders) {
 		this.name = name;
 		this.dob = dob;
 		this.address = address;
 		this.tel = tel;
 		this.email = email;
-		this.users = users;
 		this.orders = orders;
 	}
 
@@ -79,14 +77,6 @@ public class Customer implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Set<User> getUsers() {
-		return this.users;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
 	}
 
 	public Set<Order> getOrders() {

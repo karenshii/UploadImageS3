@@ -2,12 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<c:set var="check" value="${userInforList.size()}"></c:set>
-<c:if test="${check == 0}">
-	<div class="btn">
-		<a href="${pageContext.request.contextPath}/adduser">Add New User</a>
-	</div>
-</c:if>
+<div class="btn">
+	<a href="${pageContext.request.contextPath}/addUser">Add New User</a>
+</div>
 <div
 	class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
 	<i class="fa fa-times"></i>
@@ -24,8 +21,6 @@
 					<td>Role</td>
 					<td>Status</td>
 					<td>Shoper</td>
-					<td>Customer</td>
-					<td></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -38,9 +33,7 @@
 						<td>${item.password}</td>
 						<td>${item.role}</td>
 						<td>${item.status}</td>
-						<td>${item.shop.name}</td>
-						<td>${item.customer.name}</td>
-						<td><a href="${pageContext.request.contextPath}/adduser">Add</a></td>
+						<td>${item.shopInfo.name}</td>
 						<td><a
 							href="${pageContext.request.contextPath}/edituser?id=${item.id}">Edit</a></td>
 						<td><a

@@ -1,6 +1,5 @@
 package com.framgia.bean;
 
-
 public class OrderDetailInfo {
 	private Long id;
 	private int quantity;

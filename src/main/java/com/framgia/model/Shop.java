@@ -1,7 +1,9 @@
 package com.framgia.model;
 // Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -9,37 +11,35 @@ import java.util.Set;
  */
 public class Shop implements java.io.Serializable {
 
-	private int id;
+	private Integer id;
 	private String name;
 	private String address;
 	private String tel;
-	private Set<OrderDetail> orderDetails = new HashSet<OrderDetail>(0);
-	private Set<User> users = new HashSet<User>(0);
-	private Set<Product> products = new HashSet<Product>(0);
+	private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+	private List<User> users = new ArrayList<User>();
+//	private Set<OrderDetail> orderDetails = new HashSet<OrderDetail>(0);
+//	private Set<User> users = new HashSet<User>(0);
 
 	public Shop() {
 	}
-
-	public Shop(int id) {
+	
+	public Shop(Integer id){
 		this.id = id;
 	}
 
-	public Shop(int id, String name, String address, String tel, Set<OrderDetail> orderDetails, Set<User> users,
-			Set<Product> products) {
-		this.id = id;
+	public Shop(String name, String address, String tel, List<OrderDetail> orderDetails, List<User> users) {
 		this.name = name;
 		this.address = address;
 		this.tel = tel;
 		this.orderDetails = orderDetails;
 		this.users = users;
-		this.products = products;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -67,28 +67,22 @@ public class Shop implements java.io.Serializable {
 		this.tel = tel;
 	}
 
-	public Set<OrderDetail> getOrderDetails() {
-		return this.orderDetails;
+	public List<OrderDetail> getOrderDetails() {
+		return orderDetails;
 	}
 
-	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 
-	public Set<User> getUsers() {
-		return this.users;
+	public List<User> getUsers() {
+		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
-
-	public Set<Product> getProducts() {
-		return this.products;
-	}
-
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}
+	
+	
 
 }
