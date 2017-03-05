@@ -35,5 +35,5 @@ public class BaseService implements IBaseService {
 	public void setOrderDetailDAO(IOderDetailDAO orderDetailDAO) {
 		this.orderDetailDAO = orderDetailDAO;
 	}
-	
+
 }

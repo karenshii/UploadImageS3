@@ -21,4 +21,5 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+  
 </beans>
