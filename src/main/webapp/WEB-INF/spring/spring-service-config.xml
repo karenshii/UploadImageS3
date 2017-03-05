@@ -6,22 +6,27 @@
 
 	<bean id="UserService" parent="transactionProxyTemplate">
 		<property name="target">
-			<bean class="com.framgia.service.UserService" >
+			<bean class="com.framgia.service.UserService">
 				<property name="userDAO" ref="UserDAO" />
 			</bean>
 		</property>
 	</bean>
 	<bean id="ShopService" parent="transactionProxyTemplate">
 		<property name="target">
-			<bean class="com.framgia.service.ShopService" >
+			<bean class="com.framgia.service.ShopService">
 				<property name="shopDAO" ref="ShopDAO" />
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="OrderDetailService" class="com.framgia.service.OrderDetailService">
 		<property name="orderDetailDAO">
 			<ref bean="OrderDetailDAO" />
+		</property>
+	</bean>
+	<bean id="ProductService" class="com.framgia.service.ProductService">
+		<property name="productDAO">
+			<ref bean="ProductDAO" />
 		</property>
 	</bean>
 </beans>

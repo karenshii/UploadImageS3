@@ -2,6 +2,7 @@ package com.framgia.controller;
 
 import java.util.List;
 
+import org.hibernate.classic.Validatable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ public class UserController {
 
 	@Autowired
 	private IUserService userService;
-
+  
 	@Autowired
 	private IShopService shopService;
 
@@ -74,6 +75,40 @@ public class UserController {
 		
 		userService.addUser(userForm);
 		return new ModelAndView("redirect:user");
+	}
+	
+	@RequestMapping(value="/edituser")
+	public String editUser(Model model, UserInfo obj){
+		UserInfo userInfo = userService.findById(obj.getId());
+		model.addAttribute("userForm", userInfo);
+		model.addAttribute("listShop", shopService.getListShop());
+		return "edituser";
+	}
+	
+	@RequestMapping(value="/edituser", method=RequestMethod.POST)
+	public String editUser(Model model, @ModelAttribute(value="userForm") UserInfo userForm, BindingResult result){
+		boolean check = true;
+		if (Helpers.isEmpty(userForm.getPassword())) {
+			result.reject("password", "password is not empty");
+			check = false;
+		}
+		if (Helpers.isEmpty(userForm.getRole().toString())) {
+			result.reject("role", "role is not empty");
+			check = false;
+		}
+		if (Helpers.isEmpty(userForm.getStatus().toString())) {
+			result.reject("status", "status is not empty");
+			check = false;
+		}
+		if (Helpers.isEmpty(userForm.getUsername())) {
+			result.reject("username", "username is not empty");
+			check = false;
+		}
+		if (!check) {
+			return "edituser";
+		}
+		userService.editUSer(userForm);
+		return "redirect:user";
 	}
 
 }
