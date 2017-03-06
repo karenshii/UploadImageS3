@@ -21,20 +21,25 @@
 		<put-attribute name="title" value="User Data"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/user.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="addUser" extends="base.definition">
 		<put-attribute name="title" value="Add User Form"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/addUser.jsp"></put-attribute>
 	</definition>
-  
+
 	<definition name="edituser" extends="base.definition">
 		<put-attribute name="title" value="Edit User Form"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/edituser.jsp"></put-attribute>
-  </definition>
-  
+	</definition>
+
 	<definition name="order-detail-lists" extends="base.definition">
 		<put-attribute name="title" value="Order Manager"></put-attribute>
-		<put-attribute name="body" value="/WEB-INF/views/order-detail-lists.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/order-detail-lists.jsp"></put-attribute>
+	</definition>
+	<definition name="product-lists" extends="base.definition">
+		<put-attribute name="title" value="Product List"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/product-lists.jsp"></put-attribute>
 	</definition>
 
 </tiles-definitions>

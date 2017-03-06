@@ -4,13 +4,11 @@
 <!-- Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1 -->
 <hibernate-mapping>
     <class name="com.framgia.model.Product" table="product" catalog="cloudsale" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
+        <id name="id" type="java.lang.Long">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
-        <many-to-one name="shop" class="com.framgia.model.Shop" fetch="select">
-            <column name="SHOP_ID" not-null="true" />
-        </many-to-one>
+       
         <property name="name" type="string">
             <column name="NAME" length="100" />
         </property>
@@ -29,17 +27,8 @@
         <property name="status" type="java.lang.Integer">
             <column name="STATUS" />
         </property>
-        <set name="groupProducts" table="group_product" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PRODUCT_ID" not-null="true" />
-            </key>
-            <one-to-many class="com.framgia.model.GroupProduct" />
-        </set>
-        <set name="orderDetails" table="order_detail" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="PRODUCT_ID" not-null="true" />
-            </key>
-            <one-to-many class="com.framgia.model.OrderDetail" />
-        </set>
+        <property name="shopId" type="java.lang.Long">
+            <column name="SHOP_ID"/>
+        </property>
     </class>
 </hibernate-mapping>
