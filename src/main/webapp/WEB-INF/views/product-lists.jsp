@@ -34,6 +34,7 @@
 						<td>${item.image}</td>
 						<td>${item.status}</td>
 						<td>${item.date}</td>
+						<td><a href="<c:url value='/editProduct?id=${item.id}' />">Edit</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

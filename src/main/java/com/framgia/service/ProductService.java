@@ -8,8 +8,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 
 import com.framgia.bean.ProductInfo;
+import com.framgia.bean.ShopInfo;
+import com.framgia.bean.UserInfo;
 import com.framgia.model.Product;
-
+import com.framgia.model.Shop;
+import com.framgia.model.User;
 
 public class ProductService extends BaseService implements IProductService {
 
@@ -19,7 +22,7 @@ public class ProductService extends BaseService implements IProductService {
 		try {
 			List<Product> productList = productDAO.findByShopId(shopId);
 			List<ProductInfo> productInfoList = new ArrayList<ProductInfo>();
-			
+
 			for (Product product : productList) {
 				ProductInfo productInfo = new ProductInfo();
 				BeanUtils.copyProperties(product, productInfo);
@@ -31,7 +34,7 @@ public class ProductService extends BaseService implements IProductService {
 		}
 		return null;
 	}
-	
+
 	public void addProduct(ProductInfo productInfo) {
 		logger.debug("persisting user instance");
 		try {
@@ -50,7 +53,31 @@ public class ProductService extends BaseService implements IProductService {
 			logger.error("An exception save user: " + e);
 		}
 
-		
+	}
+
+	public ProductInfo findById(long id) {
+		try {
+			Product product = productDAO.findById(id);
+			ProductInfo productInfo = new ProductInfo();
+			BeanUtils.copyProperties(product, productInfo);
+			return productInfo;
+		} catch (Exception e) {
+			logger.error("An exception when find product by id: " + e);
+		}
+		return null;
+	}
+
+	public void editProduct(ProductInfo productInfo) {
+		try {
+			Product product = new Product();
+			BeanUtils.copyProperties(productInfo, product);
+			Date date = new Date();
+			product.setDate(date);
+			Product result = productDAO.save(product);
+			logger.debug("save successful product :" + result);
+		} catch (Exception e) {
+			logger.error("An exception save product: " + e);
+		}
 	}
 
 }
