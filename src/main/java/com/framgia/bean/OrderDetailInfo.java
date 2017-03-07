@@ -6,6 +6,16 @@ public class OrderDetailInfo {
 	private Long productId;
 	private int status;
 	private Long shopId;
+	private Long orderNum;
+	
+
+	public Long getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(Long orderNum) {
+		this.orderNum = orderNum;
+	}
 
 	public Long getId() {
 		return id;

@@ -19,15 +19,25 @@
 		</property>
 	</bean>
 
-	<bean id="OrderDetailService" class="com.framgia.service.OrderDetailService">
-		<property name="orderDetailDAO">
-			<ref bean="OrderDetailDAO" />
+	<bean id="OrderDetailService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="com.framgia.service.OrderDetailService">
+				<property name="orderDetailDAO" ref="OrderDetailDAO" />
+			</bean>
 		</property>
 	</bean>
-		<bean id="ProductService" parent="transactionProxyTemplate">
+	
+	<bean id="ProductService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="com.framgia.service.ProductService">
 				<property name="productDAO" ref="ProductDAO" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="OrderService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="com.framgia.service.OrderService">
+				<property name="orderDAO" ref="OrderDAO" />
 			</bean>
 		</property>
 	</bean>

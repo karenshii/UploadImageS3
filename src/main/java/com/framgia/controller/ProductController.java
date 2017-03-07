@@ -33,7 +33,8 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/addProduct/{shopId}", method = RequestMethod.GET)
-	public String addProduct(@PathVariable(value = "shopId") Long shopId, Model model) {
+	public String addProduct(@PathVariable(value = "shopId") Long shopId, Model model, Locale locale) {
+		logger.info("Welcome home! The client locale is {}.", locale);
 		ProductInfo obj = new ProductInfo(shopId);
 		model.addAttribute("productForm", obj);
 		return "add-product";
@@ -41,7 +42,8 @@ public class ProductController {
 
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	public ModelAndView addUser(Model model, @ModelAttribute(value = "productForm") ProductInfo productForm,
-			BindingResult result) {
+			BindingResult result, Locale locale) {
+		logger.info("Welcome home! The client locale is {}.", locale);
 		boolean check = true;
 		if (Helpers.isEmpty(productForm.getName())) {
 			result.reject("name", "name is not empty");
@@ -55,15 +57,22 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/editProduct")
-	public String editProduct(Model model, ProductInfo obj) {
-		ProductInfo productInfo = productService.findById(obj.getId());
-		model.addAttribute("productForm", productInfo);
-		return "edit-product";
+	public String editProduct(Model model, ProductInfo obj, Locale locale) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		if (obj!=null) {
+			ProductInfo productInfo = productService.findById(obj.getId());
+			model.addAttribute("productForm", productInfo);
+			return "edit-product";	
+		} else {
+			return "403";
+		}
+		
 	}
 
 	@RequestMapping(value = "/editProduct", method = RequestMethod.POST)
 	public String editProduct(Model model, @ModelAttribute(value = "productForm") ProductInfo productForm,
-			BindingResult result) {
+			BindingResult result, Locale locale) {
+		logger.info("Welcome home! The client locale is {}.", locale);
 		boolean check = true;
 		if (Helpers.isEmpty(productForm.getName())) {
 			result.reject("name", "name is not empty");
@@ -75,4 +84,6 @@ public class ProductController {
 		productService.editProduct(productForm);
 		return "redirect:/product/" + productForm.getShopId();
 	}
+	
+	
 }
