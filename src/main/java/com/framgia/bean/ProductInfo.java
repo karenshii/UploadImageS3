@@ -59,6 +59,13 @@ public class ProductInfo {
 	public void setShopId(long shopId) {
 		this.shopId = shopId;
 	}
+	public ProductInfo() {
+		super();
+	}
+	public ProductInfo(long shopId) {
+		super();
+		this.shopId = shopId;
+	}
 	
 	
 }

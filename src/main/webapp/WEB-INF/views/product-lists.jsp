@@ -2,12 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<c:set var="check" value="${userInforList.size()}"></c:set>
-<c:if test="${check == 0}">
-	<div class="btn">
-		<a href="${pageContext.request.contextPath}/adduser">Add New User</a>
+<div class="btn">
+		<a href="${pageContext.request.contextPath}/addProduct/${shopId}">Add New Product</a>
 	</div>
-</c:if>
 <div
 	class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
 	<i class="fa fa-times"></i>
