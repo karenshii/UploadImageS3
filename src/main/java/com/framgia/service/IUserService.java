@@ -11,8 +11,10 @@ public interface IUserService extends IBaseService {
 	public UserInfo findById(int id);
 
 	
-	public void editUSer(UserInfo userInfo);
+	public boolean editUSer(UserInfo userInfo);
 
-	public void addUser(UserInfo userInfo);
+	public boolean addUser(UserInfo userInfo);
+	
+	public boolean deleteuser(UserInfo userInfo);
 
 }

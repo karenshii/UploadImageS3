@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<div style="color: red;">
+	<c:if test="${not empty error}">
+		<p>${error}</p>
+	</c:if>
+</div>
 <div class="btn">
 	<a href="${pageContext.request.contextPath}/addUser">Add New User</a>
 </div>

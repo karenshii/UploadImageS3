@@ -73,8 +73,11 @@ public class UserController {
 			return new ModelAndView("addUser");
 		}
 		
-		userService.addUser(userForm);
-		return new ModelAndView("redirect:user");
+		check = userService.addUser(userForm);
+		if(check){
+			return new ModelAndView("redirect:user");
+		}
+		return new ModelAndView("403");
 	}
 	
 	@RequestMapping(value="/edituser")
@@ -107,8 +110,24 @@ public class UserController {
 		if (!check) {
 			return "edituser";
 		}
-		userService.editUSer(userForm);
-		return "redirect:user";
+		check = userService.editUSer(userForm);
+		if(check){
+			return "redirect:user";
+		}
+		String msg = "error update user. please check information again!";
+		model.addAttribute("error", msg);
+		return "user";
+	}
+	
+	@RequestMapping(value="/deleteuser")
+	public String deleteUser(Model model, UserInfo userInfo){
+		boolean check = userService.deleteuser(userInfo);
+		if(check){
+			return "redirect: user";
+		}
+		String msg = "error, user do not exist";
+		model.addAttribute("error",msg);
+		return "user";
 	}
 
 }
