@@ -45,5 +45,9 @@
 		<put-attribute name="title" value="Add Product Form"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/add-product.jsp"></put-attribute>
 	</definition>
+	<definition name="edit-product" extends="base.definition">
+		<put-attribute name="title" value="Edit Product Form"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/edit-product.jsp"></put-attribute>
+	</definition>
 
 </tiles-definitions>
