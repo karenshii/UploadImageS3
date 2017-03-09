@@ -11,6 +11,7 @@
 			</bean>
 		</property>
 	</bean>
+	
 	<bean id="ShopService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="com.framgia.service.ShopService">
@@ -24,7 +25,8 @@
 			<ref bean="OrderDetailDAO" />
 		</property>
 	</bean>
-		<bean id="ProductService" parent="transactionProxyTemplate">
+	
+	<bean id="ProductService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="com.framgia.service.ProductService">
 				<property name="productDAO" ref="ProductDAO" />

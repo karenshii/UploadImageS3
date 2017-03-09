@@ -37,17 +37,40 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/order-detail-lists.jsp"></put-attribute>
 	</definition>
+
 	<definition name="product-lists" extends="base.definition">
 		<put-attribute name="title" value="Product List"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/product-lists.jsp"></put-attribute>
 	</definition>
+
 	<definition name="add-product" extends="base.definition">
 		<put-attribute name="title" value="Add Product Form"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/add-product.jsp"></put-attribute>
 	</definition>
+
 	<definition name="edit-product" extends="base.definition">
 		<put-attribute name="title" value="Edit Product Form"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/edit-product.jsp"></put-attribute>
 	</definition>
 
+	<definition name="shop" extends="base.definition">
+		<put-attribute name="title" value="Shop Manager"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/shop.jsp"></put-attribute>
+	</definition>
+
+	<definition name="addshop" extends="base.definition">
+		<put-attribute name="title" value="Shop Form"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/addshop.jsp"></put-attribute>
+	</definition>
+
+	<definition name="errorpage" extends="base.definition">
+		<put-attribute name="title" value="Error"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/errorpage.jsp"></put-attribute>
+	</definition>
+
+	<definition name="editshop" extends="base.definition">
+		<put-attribute name="title" value="Edit Shopper"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/editshop.jsp"></put-attribute>
+	</definition>
+	
 </tiles-definitions>
