@@ -10,7 +10,6 @@
 		</property>
 	</bean>
 
-
 	<bean id="ShopDAO" class="com.framgia.dao.ShopDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -22,16 +21,23 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
-	 <bean id="ProductDAO" class="com.framgia.dao.ProductDAO">
+
+	<bean id="ProductDAO" class="com.framgia.dao.ProductDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	 <bean id="OrderDAO" class="com.framgia.dao.OrderDAO">
+
+	<bean id="OrderDAO" class="com.framgia.dao.OrderDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-  
+
+	<bean id="CustomerDAO" class="com.framgia.dao.CustomerDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
 </beans>
