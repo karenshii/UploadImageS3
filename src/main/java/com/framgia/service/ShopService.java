@@ -9,7 +9,6 @@ import org.springframework.beans.BeanUtils;
 import com.framgia.bean.OrderDetailInfo;
 import com.framgia.bean.ShopInfo;
 import com.framgia.bean.UserInfo;
-import com.framgia.dao.IShopDAO;
 import com.framgia.model.Shop;
 import com.framgia.util.Helpers;
 
@@ -44,6 +43,60 @@ public class ShopService extends BaseService implements IShopService {
 			logger.debug("An exception find all shop:" + e);
 		}
 		return null;
+	}
+
+	@Override
+	public boolean addShop(ShopInfo shopInfo) {
+		logger.debug("persisting shop instance");
+		try {
+			Shop shop = new Shop();
+			shop.setId(shopInfo.getId());
+			shop.setAddress(shopInfo.getAddress());
+			shop.setName(shopInfo.getName());
+			shop.setTel(shopInfo.getTel());
+			shop = shopDAO.save(shop);
+			logger.debug("save successful shop :" + shop);
+			return true;
+		} catch (Exception e) {
+			logger.error("An exception save shop: " + e);
+		}
+		return false;
+	}
+
+	@Override
+	public ShopInfo findShopById(int id) {
+		try {
+			Shop shop = shopDAO.findById(new Integer(id));
+			ShopInfo shopInfo = new ShopInfo();
+			shopInfo.setAddress(shop.getAddress());
+			shopInfo.setId(shop.getId());
+			shopInfo.setName(shop.getName());
+			shopInfo.setTel(shop.getTel());
+
+			logger.debug("get shop by id: " + shopInfo);
+			return shopInfo;
+		} catch (Exception e) {
+			logger.error("an exception get shop by id:" + e);
+		}
+
+		return null;
+	}
+
+	@Override
+	public boolean editShop(ShopInfo shopInfo) {
+		try {
+			Shop shop = new Shop();
+			shop.setAddress(shopInfo.getAddress());
+			shop.setId(shopInfo.getId());
+			shop.setName(shopInfo.getName());
+			shop.setTel(shopInfo.getTel());
+			shop = shopDAO.save(shop);
+			logger.debug("edit shop successful" + shop);
+			return true;
+		} catch (Exception e) {
+			logger.error("an exception edit shop: " + e);
+		}
+		return false;
 	}
 
 }
