@@ -40,7 +40,7 @@ public class UserService extends BaseService implements IUserService {
 	}
 
 	@Override
-	public void addUser(UserInfo userInfo) {
+	public boolean addUser(UserInfo userInfo) {
 		logger.debug("persisting user instance");
 		try {
 			User user = new User();
@@ -52,14 +52,16 @@ public class UserService extends BaseService implements IUserService {
 			user.setUsername(userInfo.getUsername());
 			User result = userDAO.save(user);
 			logger.debug("save successful user :" + result);
+			
+			return true;
 		} catch (Exception e) {
 			logger.error("An exception save user: " + e);
 		}
-
+		return false;
 	}
 
 	@Override
-	public void editUSer(UserInfo userInfo) {
+	public boolean editUSer(UserInfo userInfo) {
 		try {
 			User user = new User();
 			user.setId(userInfo.getId());
@@ -70,9 +72,12 @@ public class UserService extends BaseService implements IUserService {
 			user.setUsername(userInfo.getUsername());
 			User result = userDAO.save(user);
 			logger.debug("save successful user :" + result);
+			
+			return true;
 		} catch (Exception e) {
 			logger.error("An exception save user: " + e);
 		}
+		return false;
 	}
 
 	@Override
@@ -96,5 +101,24 @@ public class UserService extends BaseService implements IUserService {
 			logger.error("An exception when edit user: " + e);
 		}
 		return null;
+	}
+
+	@Override
+	public boolean deleteuser(UserInfo userInfo) {
+		try {
+			User user = new User();
+			user = userDAO.findById(userInfo.getId());
+			if(user != null){
+				userDAO.delete(user);
+				logger.debug("delete successful user ");
+				return true;
+			}
+			else{
+				return false;
+			}
+		} catch (Exception e) {
+			logger.error("An exception delete user: " + e);
+		}
+		return false;
 	}
 }
