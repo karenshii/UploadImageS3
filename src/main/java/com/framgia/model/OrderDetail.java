@@ -10,18 +10,24 @@ public class OrderDetail {
 	private Long productId;
 	private int status;
 	private Long shopId;
+	private Long orderNum;
 
 	public OrderDetail() {
 	}
 
-	public OrderDetail(Long id, int quantity, Long productId, int status, Long shopId) {
+	
+
+	public OrderDetail(Long id, int quantity, Long productId, int status, Long shopId, Long orderNum) {
 		super();
 		this.id = id;
 		this.quantity = quantity;
 		this.productId = productId;
 		this.status = status;
 		this.shopId = shopId;
+		this.orderNum = orderNum;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -62,5 +68,18 @@ public class OrderDetail {
 	public void setShopId(Long shopId) {
 		this.shopId = shopId;
 	}
+
+
+
+	public Long getOrderNum() {
+		return orderNum;
+	}
+
+
+
+	public void setOrderNum(Long orderNum) {
+		this.orderNum = orderNum;
+	}
+	
 
 }

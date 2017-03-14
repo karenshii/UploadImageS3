@@ -35,7 +35,7 @@ public class ProductService extends BaseService implements IProductService {
 		return null;
 	}
 
-	public void addProduct(ProductInfo productInfo) {
+	public boolean addProduct(ProductInfo productInfo) {
 		logger.debug("persisting user instance");
 		try {
 			Product product = new Product();
@@ -51,8 +51,9 @@ public class ProductService extends BaseService implements IProductService {
 			logger.debug("save successful user :" + result);
 		} catch (Exception e) {
 			logger.error("An exception save user: " + e);
+			return false;
 		}
-
+		return true;
 	}
 
 	public ProductInfo findById(long id) {
@@ -67,7 +68,7 @@ public class ProductService extends BaseService implements IProductService {
 		return null;
 	}
 
-	public void editProduct(ProductInfo productInfo) {
+	public boolean editProduct(ProductInfo productInfo) {
 		try {
 			Product product = new Product();
 			BeanUtils.copyProperties(productInfo, product);
@@ -77,7 +78,9 @@ public class ProductService extends BaseService implements IProductService {
 			logger.debug("save successful product :" + result);
 		} catch (Exception e) {
 			logger.error("An exception save product: " + e);
+			return false;
 		}
+		return true;
 	}
 
 }

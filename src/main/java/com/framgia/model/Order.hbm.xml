@@ -1,25 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.framgia.model.Order" table="order" catalog="cloudsale" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
-            <column name="ID" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="customer" class="com.framgia.model.Customer" fetch="select">
-            <column name="CUSTOMER_ID" not-null="true" />
-        </many-to-one>
-        <property name="totalmoney" type="java.lang.Double">
-            <column name="TOTALMONEY" precision="22" scale="0" />
-        </property>
-        <property name="date" type="timestamp">
-            <column name="DATE" length="19" />
-        </property>
-        <property name="status" type="java.lang.Integer">
-            <column name="STATUS" />
-        </property>
-        <one-to-one name="orderDetail" class="com.framgia.model.OrderDetail"></one-to-one>
-    </class>
+	<class name="com.framgia.model.Order" table="order" catalog="cloudsale"
+		optimistic-lock="version">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+		<property name="totalMoney" type="java.lang.Double">
+			<column name="TOTALMONEY" />
+		</property>
+		<property name="date" type="timestamp">
+			<column name="DATE" length="19" />
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="STATUS" />
+		</property>
+		<property name="customerId" type="java.lang.Long">
+			<column name="CUSTOMER_ID" />
+		</property>
+	</class>
 </hibernate-mapping>

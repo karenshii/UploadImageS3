@@ -6,8 +6,12 @@
 	<class name="com.framgia.model.OrderDetail" table="order_detail"
 		catalog="cloudsale" optimistic-lock="version">
 		<id name="id" type="java.lang.Long">
-			<column name="ORDER_ID" />
+			<column name="ID" />
+			<generator class="increment" />
 		</id>
+		<property name="orderNum" type="java.lang.Long">
+			<column name="ORDER_NUM" />
+		</property>
 		<property name="quantity" type="java.lang.Integer">
 			<column name="QUANTITY" />
 		</property>
