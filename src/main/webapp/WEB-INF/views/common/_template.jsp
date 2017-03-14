@@ -23,6 +23,9 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/templatemo-style.css"
 	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet">
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>
 </head>
