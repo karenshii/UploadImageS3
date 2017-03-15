@@ -1,0 +1,26 @@
+.sea-right{
+	display: inline-block;
+	background-color: #fff;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-right: 15px;
+	position: relative;
+	
+}
+.ssa{
+	padding: 5px;
+}
+.cus{
+	position: relative;
+	
+}
+.top-login{
+	margin: 10px;
+}
+.error-login{
+	color: red;
+}
+.logout-msg{
+	color: green;
+}

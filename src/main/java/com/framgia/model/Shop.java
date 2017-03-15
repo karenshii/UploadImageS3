@@ -15,74 +15,43 @@ public class Shop implements java.io.Serializable {
 	private String name;
 	private String address;
 	private String tel;
-	private List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
-	private List<User> users = new ArrayList<User>();
-//	private Set<OrderDetail> orderDetails = new HashSet<OrderDetail>(0);
-//	private Set<User> users = new HashSet<User>(0);
-
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public Shop(Integer id, String name, String address, String tel) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.tel = tel;
+	}
 	public Shop() {
+		super();
 	}
 	
 	public Shop(Integer id){
 		this.id = id;
 	}
-
-	public Shop(String name, String address, String tel, List<OrderDetail> orderDetails, List<User> users) {
-		this.name = name;
-		this.address = address;
-		this.tel = tel;
-		this.orderDetails = orderDetails;
-		this.users = users;
-	}
-
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAddress() {
-		return this.address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getTel() {
-		return this.tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	public List<OrderDetail> getOrderDetails() {
-		return orderDetails;
-	}
-
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-	
-	
 
 }

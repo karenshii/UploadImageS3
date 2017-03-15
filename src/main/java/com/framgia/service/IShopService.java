@@ -13,5 +13,9 @@ public interface IShopService extends IBaseService {
 	public ShopInfo findShopById(int id);
 
 	public boolean editShop(ShopInfo shopInfo);
+	
+	public boolean deleteShop(ShopInfo shopInfo);
+	
+	public List<ShopInfo> searchShop(ShopInfo shopInfo);
 
 }

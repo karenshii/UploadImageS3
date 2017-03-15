@@ -16,15 +16,5 @@
         <property name="tel" type="string">
             <column name="TEL" length="20" />
         </property>
-        <list name="orderDetails" cascade="all" table="order_detail" lazy="true" fetch="select">
-            <key column="SHOP_ID" />
-             <index column="idx"/>
-            <one-to-many class="com.framgia.model.OrderDetail" />
-        </list>
-        <list name="users" cascade="all" table="user" lazy="true" fetch="select">
-            <key column="SHOP_ID" />
-             <index column="idx"/>
-            <one-to-many class="com.framgia.model.User" />
-        </list>
     </class>
 </hibernate-mapping>

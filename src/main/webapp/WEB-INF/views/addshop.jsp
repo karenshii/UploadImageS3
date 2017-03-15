@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<div style="color: red;">
+	<c:if test="${not empty error}">
+		<p>${error}</p>
+	</c:if>
+</div>
 <h2 class="margin-bottom-10">Add Shop</h2>
 <form:form action="${pageContext.request.contextPath}/addshop"
 	modelAttribute="shopForm" class="templatemo-login-form" method="post">

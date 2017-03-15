@@ -1,5 +1,6 @@
 package com.framgia.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.framgia.bean.ShopInfo;
 import com.framgia.service.IShopService;
 import com.framgia.util.Helpers;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 @Controller
 public class ShopController {
@@ -24,6 +26,7 @@ public class ShopController {
 	public String findAllShop(Model model) {
 		List<ShopInfo> list = shopService.getListShop();
 		model.addAttribute("listShop", list);
+		model.addAttribute("shopForm", new ShopInfo());
 		return "shop";
 	}
 
@@ -56,7 +59,9 @@ public class ShopController {
 		if (check) {
 			return "redirect: shop";
 		}
-		return "errorpage";
+		String msg = "error, do not add new shop";
+		model.addAttribute("error", msg);
+		return "addshop";
 	}
 
 	@RequestMapping(value = "/editshop")
@@ -88,6 +93,28 @@ public class ShopController {
 		if (check) {
 			return "redirect: shop";
 		}
-		return "errorpage";
+		String msg = "error, do not edit shop, please check information again!";
+		model.addAttribute("error", msg);
+		return "editshop";
 	}
+	
+	@RequestMapping(value="/deleteshop")
+	public String deleteShop(Model model, ShopInfo shopForm){
+		boolean check = shopService.deleteShop(shopForm);
+		if(check){
+			return "redirect: shop";
+		}
+		String msg = "error, do not delete shop. please check information again";
+		model.addAttribute("error", msg);
+		return "shop";
+	}
+	
+	@RequestMapping(value="/searchshop")
+	public String searchShop(Model model, @ModelAttribute(value="shopForm") ShopInfo shopForm){
+		List<ShopInfo> listShopInfo = new ArrayList<ShopInfo>();
+		listShopInfo = shopService.searchShop(shopForm);
+		model.addAttribute("listShop", listShopInfo);
+		return "shop";
+	}
+	
 }

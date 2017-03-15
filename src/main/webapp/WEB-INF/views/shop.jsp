@@ -1,9 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<div style="color: red;">
+	<c:if test="${not empty error}">
+		<p>${error}</p>
+	</c:if>
+</div>
 <div class="btn">
-	<a href="${pageContext.request.contextPath}/addshop">Add new Shopper</a>
+	<a href="${pageContext.request.contextPath}/addshop">Add new
+		Shopper</a>
+</div>
+<div class="sea-right" style="float: right;">
+	<form:form action="${pageContext.request.contextPath}/searchshop"
+		modelAttribute="shopForm" method="post">
+		<form:input path="name" type="text" name="searchName" id="sea"
+			class="ssa" placeholder="Enter the name" />
+		<form:input path="address" type="text" name="searchAddress" id="sea"
+			class="ssa" placeholder="Enter the address" />
+		<form:input path="tel" type="text" name="searchTel" id="sea"
+			class="ssa" placeholder="Enter the Tel" />
+		<input type="submit" class="btn btn-primary cus" value="Search" />
+	</form:form>
 </div>
 <div
 	class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
