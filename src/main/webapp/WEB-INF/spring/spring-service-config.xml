@@ -24,7 +24,9 @@
 		<property name="target">
 			<bean class="com.framgia.service.OrderDetailService">
 				<property name="orderDetailDAO" ref="OrderDetailDAO" />
+				<property name="orderDAO" ref="OrderDAO" />
 			</bean>
+			
 		</property>
 	</bean>
 	
@@ -39,7 +41,9 @@
 		<property name="target">
 			<bean class="com.framgia.service.OrderService">
 				<property name="orderDAO" ref="OrderDAO" />
+				<property name="orderDetailDAO" ref="OrderDetailDAO" />
 			</bean>
 		</property>
+		
 	</bean>
 </beans>

@@ -10,5 +10,6 @@ public interface IOrderDetailService extends IBaseService {
 	public List<OrderDetailInfo> findByShopId(long shopId);
 	
 	public boolean saveOrderDetail(List<ProductInfo> productInfoList, long userId);
+	public boolean editStatusOrderDetail(long orderDetailId);
 
 }

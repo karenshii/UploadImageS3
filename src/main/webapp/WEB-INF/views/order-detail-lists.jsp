@@ -2,12 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<c:set var="check" value="${userInforList.size()}"></c:set>
-<c:if test="${check == 0}">
-	<div class="btn">
-		<a href="${pageContext.request.contextPath}/adduser">Add New User</a>
-	</div>
-</c:if>
+
 <div
 	class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
 	<i class="fa fa-times"></i>
@@ -33,6 +28,7 @@
 						<td>${item.quantity}</td>
 						<td>${item.productId}</td>
 						<td>${item.status}</td>
+						<td><a href="<c:url value='/change-status-order-detail/${item.shopId}/${item.id}' />">Change Status</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
