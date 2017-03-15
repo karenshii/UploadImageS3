@@ -42,4 +42,13 @@
 			</bean>
 		</property>
 	</bean>
+	
+	<bean id="CustomerService" parent="transactionProxyTemplate">
+		<property name="target">
+			<bean class="com.framgia.service.CustomerService">
+				<property name="customerDAO" ref="CustomerDAO" />
+			</bean>
+		</property>
+	</bean>
+	
 </beans>

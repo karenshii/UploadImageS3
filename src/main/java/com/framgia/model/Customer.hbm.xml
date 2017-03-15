@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1 -->
+<!-- @author toandk -->
 <hibernate-mapping>
     <class name="com.framgia.model.Customer" table="customer" catalog="cloudsale" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -23,11 +23,5 @@
         <property name="email" type="string">
             <column name="EMAIL" length="50" />
         </property>
-        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="CUSTOMER_ID" not-null="true" />
-            </key>
-            <one-to-many class="com.framgia.model.Order" />
-        </set>
     </class>
 </hibernate-mapping>

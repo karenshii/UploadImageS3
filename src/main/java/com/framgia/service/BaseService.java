@@ -1,5 +1,6 @@
 package com.framgia.service;
 
+import com.framgia.dao.ICustomerDAO;
 import com.framgia.dao.IOderDetailDAO;
 import com.framgia.dao.IOrderDAO;
 import com.framgia.dao.IProductDAO;
@@ -11,6 +12,7 @@ public class BaseService implements IBaseService {
 	protected IUserDAO userDAO;
 	
 	protected IShopDAO shopDAO;
+	
 	protected IProductDAO productDAO;
 	protected IOrderDAO orderDAO;
 	
@@ -21,6 +23,16 @@ public class BaseService implements IBaseService {
 
 	public void setOrderDAO(IOrderDAO orderDAO) {
 		this.orderDAO = orderDAO;
+	}
+	
+	protected ICustomerDAO customerDAO;
+
+	public ICustomerDAO getCustomerDAO() {
+		return customerDAO;
+	}
+
+	public void setCustomerDAO(ICustomerDAO customerDAO) {
+		this.customerDAO = customerDAO;
 	}
 
 	public IProductDAO getProductDAO() {

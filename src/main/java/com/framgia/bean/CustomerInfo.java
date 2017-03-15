@@ -1,15 +1,15 @@
-package com.framgia.model;
-// Generated Feb 27, 2017 3:44:10 PM by Hibernate Tools 5.2.0.CR1
+package com.framgia.bean;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.framgia.model.Order;
 /**
  * @author toandk
  */
-public class Customer implements java.io.Serializable {
-
+public class CustomerInfo {
+	
 	private Integer id;
 	private String name;
 	private Date dob;
@@ -53,10 +53,11 @@ public class Customer implements java.io.Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Customer() {
+	public CustomerInfo() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	public Customer(Integer id, String name, Date dob, String address, String tel, String email) {
+	public CustomerInfo(Integer id, String name, Date dob, String address, String tel, String email) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -65,4 +66,7 @@ public class Customer implements java.io.Serializable {
 		this.tel = tel;
 		this.email = email;
 	}
+	
+	
+
 }
