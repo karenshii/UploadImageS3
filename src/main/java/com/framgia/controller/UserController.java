@@ -20,6 +20,7 @@ import com.framgia.service.IUserService;
 import com.framgia.util.Helpers;
 
 @Controller
+@RequestMapping(value="/admin")
 public class UserController {
 
 	@Autowired

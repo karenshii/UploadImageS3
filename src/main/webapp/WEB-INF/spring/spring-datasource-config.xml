@@ -44,6 +44,7 @@
 				<value>com/framgia/model/Product.hbm.xml</value>
 				<value>com/framgia/model/Shop.hbm.xml</value>
 				<value>com/framgia/model/User.hbm.xml</value>
+				<value>com/framgia/model/UserRole.hbm.xml</value>
 			</list>
 		</property>
 

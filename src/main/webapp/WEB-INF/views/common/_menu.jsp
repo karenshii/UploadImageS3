@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 <div class="templatemo-sidebar">
 	<header class="templatemo-site-header">
 		<div class="square"></div>
@@ -21,6 +22,11 @@
 		<i class="fa fa-bars"></i>
 	</div>
 	<nav class="templatemo-left-nav">
+	<c:url value="/j_spring_security_logout" var="logout"></c:url>
+		<form action="${logout}" method="post" id="logoutForm">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</form>
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/user"
 				class="active"><i class="fa fa-home fa-fw"></i>USers Manager</a></li>
@@ -35,8 +41,8 @@
 				href="${pageContext.request.contextPath}/order-detail-lists"
 				class="active"><i class="fa fa-users fa-fw"></i>Order Manager</a></li>
 				
-			<li><a href="${pageContext.request.contextPath}/logout"><i
-					class="fa fa-eject fa-fw"></i>Sign Out</a></li>
+			<li><a href="javascript:logout()"><i
+					class="fa fa-eject fa-fw"></i>${pageContext.request.userPrincipal.name} |Sign Out</a></li>
 		</ul>
 	</nav>
 </div>

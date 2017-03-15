@@ -51,4 +51,8 @@
 		</property>
 	</bean>
 	
+	<bean id="UserDetailServiceImpl" class="com.framgia.service.UserDetailServiceImpl">
+		<property name="userDAO" ref="UserDAO" />
+	</bean>
+	
 </beans>

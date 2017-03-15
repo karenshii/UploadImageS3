@@ -22,5 +22,10 @@
         <property name="status" type="java.lang.Integer">
             <column name="STATUS" />
         </property>
+        <list name="userRoles" cascade="all" table="user_role" lazy="true" fetch="select" inverse="true">
+            <key column="user_id" />
+             	<index column="idx"/>
+            <one-to-many class="com.framgia.model.UserRole" />
+        </list>
     </class>
 </hibernate-mapping>
