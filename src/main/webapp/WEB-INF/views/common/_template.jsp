@@ -23,11 +23,12 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/templatemo-style.css"
 	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/style.css"
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet">
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 </head>
 <body>
 	<div class="templatemo-flex-row">

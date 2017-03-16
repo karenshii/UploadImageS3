@@ -60,7 +60,6 @@ public class UserInfo {
 
 	public UserInfo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

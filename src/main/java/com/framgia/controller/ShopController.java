@@ -17,6 +17,7 @@ import com.framgia.util.Helpers;
 import com.mysql.fabric.xmlrpc.base.Array;
 
 @Controller
+@RequestMapping(value="/shop")
 public class ShopController {
 
 	@Autowired
