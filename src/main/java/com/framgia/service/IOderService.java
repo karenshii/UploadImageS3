@@ -6,5 +6,5 @@ import com.framgia.bean.ProductInfo;
 
 public interface IOderService extends IBaseService {
 
-	public long saveOrder(List<ProductInfo> productInfoList, long userId);
+	public boolean saveOrder(List<ProductInfo> productInfoList, long userId);
 }

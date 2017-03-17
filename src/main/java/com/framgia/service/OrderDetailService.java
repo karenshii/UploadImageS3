@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 
 import com.framgia.bean.OrderDetailInfo;
 import com.framgia.bean.ProductInfo;
+import com.framgia.model.Order;
 import com.framgia.model.OrderDetail;
 
 public class OrderDetailService extends BaseService implements IOrderDetailService {
@@ -47,9 +48,27 @@ public class OrderDetailService extends BaseService implements IOrderDetailServi
 			} catch (Exception e) {
 				logger.error(e);
 				return false;
-			}			
+			}
 		}
 		return true;
 	}
+
+	public boolean editStatusOrderDetail(long orderDetailId) {
+		try {
+			OrderDetail orderDetail = orderDetailDAO.findById(orderDetailId);
+			long orderNum = orderDetailDAO.editStatusOrderDetail(orderDetail);
+			Order order = orderDAO.findById(orderNum);
+			int totalStatus = orderDetailDAO.totalStatus(orderNum);
+			order.setStatus(totalStatus);
+			orderDAO.save(order);
+			return true;
+		} catch (Exception e) {
+			logger.error(e);
+			return false;
+		}
+
+	}
+
+
 
 }
