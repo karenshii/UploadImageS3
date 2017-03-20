@@ -16,6 +16,7 @@ public class BaseService implements IBaseService {
 	protected IProductDAO productDAO;
 	protected IOrderDAO orderDAO;
 	
+	
 
 	public IOrderDAO getOrderDAO() {
 		return orderDAO;

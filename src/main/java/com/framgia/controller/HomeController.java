@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.framgia.bean.UserInfo;
+import com.framgia.service.IProductService;
 import com.framgia.service.IUserService;
 import com.framgia.util.Helpers;
 
@@ -33,19 +34,12 @@ public class HomeController {
 	 */
 
 	@Autowired
-	private IUserService userService;
+	private IProductService productService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-
+		model.addAttribute("productList", productService.getAll());
 		return "home";
 	}
 

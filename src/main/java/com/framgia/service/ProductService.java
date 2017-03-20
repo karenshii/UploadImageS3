@@ -1,18 +1,18 @@
 package com.framgia.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.framgia.bean.ProductInfo;
-import com.framgia.bean.ShopInfo;
-import com.framgia.bean.UserInfo;
 import com.framgia.model.Product;
-import com.framgia.model.Shop;
-import com.framgia.model.User;
+import com.framgia.util.S3Config;
 
 public class ProductService extends BaseService implements IProductService {
 
@@ -35,7 +35,7 @@ public class ProductService extends BaseService implements IProductService {
 		return null;
 	}
 
-	public boolean addProduct(ProductInfo productInfo) {
+	public Long addProduct(ProductInfo productInfo) {
 		logger.debug("persisting user instance");
 		try {
 			Product product = new Product();
@@ -48,12 +48,11 @@ public class ProductService extends BaseService implements IProductService {
 			product.setStatus(productInfo.getStatus());
 			product.setShopId(productInfo.getShopId());
 			Product result = productDAO.save(product);
-			logger.debug("save successful user :" + result);
+			return result.getId();
 		} catch (Exception e) {
 			logger.error("An exception save user: " + e);
-			return false;
+			return (long) 0;
 		}
-		return true;
 	}
 
 	public ProductInfo findById(long id) {
@@ -82,5 +81,65 @@ public class ProductService extends BaseService implements IProductService {
 		}
 		return true;
 	}
+	
+	public boolean editImage(Long productId, String newImage) {
+		try {
+			
+			Product product = productDAO.findById(productId);
+			product.setImage(newImage);
+			Date date = new Date();
+			product.setDate(date);
+			Product result = productDAO.save(product);
+			logger.debug("save successful product :" + result);
+		} catch (Exception e) {
+			logger.error("An exception save product: " + e);
+			return false;
+		}
+		return true;
+	}
 
+	
+	
+
+	public List<ProductInfo> getAll() {
+		try {
+			return new ProductInfo().copy(productDAO.findAll());
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+	}
+
+	public String getImage(Long productId) {
+		try {
+			return productDAO.findById(productId).getImage();
+		} catch (Exception e) {
+			logger.error(e);
+			return null;
+		}
+	}
+
+	public String upToS3(CommonsMultipartFile imageFile, Long productId) {
+		if (imageFile == null | productId == 0)
+			return null;
+		try {
+			Product product = productDAO.findById(productId);
+			String fileName = productDAO.findById(productId).getShopId().toString() + "_" + productId +".jpg";
+			String localUrl = ProductService.class.getProtectionDomain().getCodeSource().getLocation() + fileName ;
+			String directUrl = localUrl.substring(5,localUrl.length());
+			imageFile.transferTo(new File(directUrl));
+			
+			AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+			ctx.register(S3Config.class);
+			ctx.refresh();
+
+			IS3Service service = ctx.getBean(IS3Service.class);
+			service.s3UploadCommand(directUrl, fileName);
+			ctx.close();
+			return service.getS3Url()+fileName;
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
 }

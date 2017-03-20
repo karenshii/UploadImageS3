@@ -11,7 +11,7 @@
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="ShopService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="com.framgia.service.ShopService">
@@ -26,10 +26,10 @@
 				<property name="orderDetailDAO" ref="OrderDetailDAO" />
 				<property name="orderDAO" ref="OrderDAO" />
 			</bean>
-			
+
 		</property>
 	</bean>
-	
+
 	<bean id="ProductService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="com.framgia.service.ProductService">
@@ -44,9 +44,9 @@
 				<property name="orderDetailDAO" ref="OrderDetailDAO" />
 			</bean>
 		</property>
-		
+
 	</bean>
-	
+
 	<bean id="CustomerService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="com.framgia.service.CustomerService">
@@ -54,9 +54,28 @@
 			</bean>
 		</property>
 	</bean>
-	
+
 	<bean id="UserDetailServiceImpl" class="com.framgia.service.UserDetailServiceImpl">
 		<property name="userDAO" ref="UserDAO" />
 	</bean>
-	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+		<property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">Error</prop>
+			</props>
+		</property>
+	</bean>
+
 </beans>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <h2 class="margin-bottom-10">Add Product Instance</h2>
 <form:form action="${pageContext.request.contextPath}/addProduct/"
-	modelAttribute="productForm" class="templatemo-login-form"
+	modelAttribute="productForm" class="templatemo-login-form" enctype="multipart/form-data"
 	method="post">
 
 	<div class="row form-group">
@@ -28,8 +28,8 @@
 			<form:input path="price" class="form-control" id="price" />
 		</div>
 		<div class="col-lg-6 col-md-6 form-group">
-			<label for="image">Image</label>
-			<form:input path="image" class="form-control" id="image" />
+			<label for="fileData">Image</label>
+			<form:input type="file" path="fileData"  id="fileData" />
 		</div>
 		<div class="col-lg-6 col-md-6 form-group">
 			<label for="status">Status</label>

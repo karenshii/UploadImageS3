@@ -3,14 +3,14 @@ package com.framgia.model;
 import java.util.Date;
 
 public class Product {
-	private long id;
+	private Long id;
 	private String name;
 	private String detail;
 	private double price;
 	private String image;
 	private Date date;
 	private int status;
-	private long shopId;
+	private Long shopId;
 
 	public Product() {
 	}
@@ -32,11 +32,11 @@ public class Product {
 
 
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -88,11 +88,11 @@ public class Product {
 		this.status = status;
 	}
 
-	public long getShopId() {
+	public Long getShopId() {
 		return shopId;
 	}
 
-	public void setShopId(long shopId) {
+	public void setShopId(Long shopId) {
 		this.shopId = shopId;
 	}
 

@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.framgia.bean.ProductInfo;
-import com.framgia.bean.UserInfo;
 import com.framgia.service.IProductService;
 import com.framgia.util.Helpers;
+import com.framgia.util.S3Test;
 
 @Controller
 public class ProductController {
@@ -52,21 +52,28 @@ public class ProductController {
 		if (!check) {
 			return new ModelAndView("add-product");
 		}
-		productService.addProduct(productForm);
+
+		Long productId = productService.addProduct(productForm);
+		System.out.println("Product ID: ----" + productId);
+		String image = new S3Test().Upload(productForm.getFileData(), productId);
+		productService.editImage(productId, image);
+
 		return new ModelAndView("redirect:/product/" + productForm.getShopId());
 	}
 
 	@RequestMapping(value = "/editProduct")
 	public String editProduct(Model model, ProductInfo obj, Locale locale) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		if (obj!=null) {
+		if (obj != null) {
 			ProductInfo productInfo = productService.findById(obj.getId());
 			model.addAttribute("productForm", productInfo);
-			return "edit-product";	
+			model.addAttribute("image", productInfo.getImage());
+
+			return "edit-product";
 		} else {
 			return "403";
 		}
-		
+
 	}
 
 	@RequestMapping(value = "/editProduct", method = RequestMethod.POST)
@@ -81,9 +88,17 @@ public class ProductController {
 		if (!check) {
 			return "edit-product";
 		}
+		System.out.println("---------------ID" + productForm.getId());
+		productForm.setImage(productService.upToS3(productForm.getFileData(), productForm.getId()));
 		productService.editProduct(productForm);
 		return "redirect:/product/" + productForm.getShopId();
 	}
-	
-	
+
+	@RequestMapping(value = { "/productImage/{productId}" }, method = RequestMethod.GET)
+	public void productImage(@PathVariable(value = "productId") Long productId, Model model) {
+		if (productId != null) {
+
+		}
+	}
+
 }

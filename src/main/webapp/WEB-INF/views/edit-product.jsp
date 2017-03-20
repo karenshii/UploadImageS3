@@ -5,10 +5,10 @@
 <h2 class="margin-bottom-10">Add Product Instance</h2>
 <form:form action="${pageContext.request.contextPath}/editProduct/"
 	modelAttribute="productForm" class="templatemo-login-form"
-	method="post">
+	method="post" enctype="multipart/form-data">
 
 	<div class="row form-group">
-		
+
 		<div class="col-lg-6 col-md-6 form-group">
 			<label for="shopId">Shop ID</label>
 			<form:input path="shopId" class="form-control" id="shopId" />
@@ -28,9 +28,10 @@
 			<label for="price">Price</label>
 			<form:input path="price" class="form-control" id="price" />
 		</div>
+
 		<div class="col-lg-6 col-md-6 form-group">
-			<label for="image">Image</label>
-			<form:input path="image" class="form-control" id="image" />
+			<label for="fileData">Image</label>
+			<form:input type="file" path="fileData" id="fileData" />
 		</div>
 		<div class="col-lg-6 col-md-6 form-group">
 			<label for="status">Status</label>
@@ -43,5 +44,7 @@
 			<label for="id">Product ID</label>
 			<form:input path="id" class="form-control" id="id" />
 		</div>
+
+		<img class="product-image" src="${image}" />
 	</div>
 </form:form>

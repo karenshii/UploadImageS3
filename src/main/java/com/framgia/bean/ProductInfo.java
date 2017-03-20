@@ -1,18 +1,40 @@
 package com.framgia.bean;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import com.framgia.model.Product;
 
 public class ProductInfo {
-	private long id;
+	private Long id;
 	private String name;
 	private String detail;
 	private double price;
+	private CommonsMultipartFile fileData;
 	private String image;
 	private Date date;
 	private int status;
-	private long shopId;
+	private Long shopId;
 	private int quantity;
 	
+	
+	
+	public CommonsMultipartFile getFileData() {
+		return fileData;
+	}
+	public void setFileData(CommonsMultipartFile fileData) {
+		this.fileData = fileData;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public int getQuantity() {
 		return quantity;
 	}
@@ -43,12 +65,6 @@ public class ProductInfo {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
 	public Date getDate() {
 		return date;
 	}
@@ -75,5 +91,15 @@ public class ProductInfo {
 		this.shopId = shopId;
 	}
 	
-	
+	public List<ProductInfo> copy(List<Product> productList) {
+		List<ProductInfo> productInfos = new ArrayList<ProductInfo>();
+		if (productList == null)
+			return productInfos;
+		for (Product product : productList) {
+			ProductInfo productInfo = new ProductInfo();
+			BeanUtils.copyProperties(product, productInfo);
+			productInfos.add(productInfo);
+		}
+		return productInfos;
+	}
 }
