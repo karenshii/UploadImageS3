@@ -1,0 +1,10 @@
+pipeline:
+  ssh:
+    image: appleboy/drone-ssh
+    host: 188.166.179.214
+    username: tungtv202
+    password: kakalot
+    port: 22
+    script:
+      - echo hello
+      - echo world
