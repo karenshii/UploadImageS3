@@ -101,7 +101,7 @@
 			<version>${mysql.connector.version}</version>
 		</dependency>
 
-		<!-- AspectJ -->
+		<!-- AspectJ gaga -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
