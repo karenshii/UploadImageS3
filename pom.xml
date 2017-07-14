@@ -44,7 +44,7 @@
 			<version>3.19.0-GA</version>
 		</dependency>
 
-		<!-- Spring + aspects -->
+		<!-- Spring + asgagapects -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
